@@ -73,24 +73,9 @@ document.addEventListener('DOMContentLoaded', function () {
 // ====== CARROSSEL ======
 document.addEventListener("DOMContentLoaded", () => {
     const slides = document.querySelector(".slides");
-    const prevBtn = document.querySelector(".slider-btn.prev");
-    const nextBtn = document.querySelector(".slider-btn.next");
 
-    if (slides && prevBtn && nextBtn) {
-        const scrollAmount = slides.clientWidth * 0.9;
-
-        prevBtn.addEventListener("click", () => {
-            slides.scrollBy({
-                left: -scrollAmount,
-                behavior: "smooth"
-            });
-        });
-
-        nextBtn.addEventListener("click", () => {
-            slides.scrollBy({
-                left: scrollAmount,
-                behavior: "smooth"
-            });
-        });
+    if (slides) {
+        // Apenas scroll/deslize natural
+        slides.style.scrollBehavior = "smooth";
     }
 });
