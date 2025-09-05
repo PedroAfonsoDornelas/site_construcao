@@ -139,7 +139,6 @@ header img {
 }
 
 .slider {
-    position: relative;
     width: 100%;
     max-width: 1000px;
     margin: 0 auto;
@@ -187,37 +186,6 @@ header img {
     height: 100%;
     object-fit: cover;
     border-radius: 12px;
-}
-
-/* Botões do carrossel */
-.slider-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 215, 0, 0.9);
-    color: #0a0f2b;
-    border: none;
-    border-radius: 50%;
-    width: 45px;
-    height: 45px;
-    cursor: pointer;
-    font-size: 20px;
-    font-weight: bold;
-    z-index: 10;
-    transition: background 0.3s, transform 0.2s;
-}
-
-.slider-btn:hover {
-    background: #ffd700;
-    transform: scale(1.1);
-}
-
-.slider-btn.prev {
-    left: 10px;
-}
-
-.slider-btn.next {
-    right: 10px;
 }
 
 /* CONTACT */
@@ -421,12 +389,6 @@ footer p {
         max-width: 280px;
         height: 200px;
     }
-
-    .slider-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 18px;
-    }
 }
 
 @media (max-width: 480px) {
@@ -467,11 +429,5 @@ footer p {
     .slides > div {
         max-width: 240px;
         height: 180px;
-    }
-
-    .slider-btn {
-        width: 35px;
-        height: 35px;
-        font-size: 16px;
     }
 }
