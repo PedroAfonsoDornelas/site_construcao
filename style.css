@@ -14,12 +14,10 @@ body {
 /* HEADER */
 header {
     background: #FFD700;
-    /* amarelo */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 110px;
-    /* padrão desktop */
 }
 
 header .container {
@@ -27,18 +25,15 @@ header .container {
     margin: 0 auto;
     display: flex;
     justify-content: center;
-    /* Só centraliza a logo */
     align-items: center;
 }
 
 header img {
     max-height: 50px;
-    /* desktop */
 }
 
 .logo {
     max-height: 270px;
-    /* controla a altura da logo */
     width: auto;
     height: auto;
 }
@@ -132,7 +127,7 @@ header img {
     color: #ffd700;
 }
 
-/* GALLERY */
+/* ================== CARROSSEL (GALLERY) ================== */
 .gallery-section {
     padding: 80px 20px;
 }
@@ -143,21 +138,86 @@ header img {
     text-align: center;
 }
 
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-.gallery img {
+.slider {
+    position: relative;
     width: 100%;
-    border-radius: 15px;
-    transition: transform 0.3s, box-shadow 0.3s;
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow: hidden;
 }
 
-.gallery img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+.slides {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    gap: 20px;
+    padding: 10px;
+}
+
+.slides::-webkit-scrollbar {
+    height: 8px;
+}
+.slides::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+.slides::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.slides > div {
+    flex-shrink: 0;
+    width: 80%;
+    max-width: 400px;
+    height: 250px;
+    border-radius: 12px;
+    overflow: hidden;
+    scroll-snap-align: start;
+    background: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.slides img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* Botões do carrossel */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 215, 0, 0.9);
+    color: #0a0f2b;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    z-index: 10;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.slider-btn:hover {
+    background: #ffd700;
+    transform: scale(1.1);
+}
+
+.slider-btn.prev {
+    left: 10px;
+}
+
+.slider-btn.next {
+    right: 10px;
 }
 
 /* CONTACT */
@@ -306,6 +366,11 @@ footer p {
     .cards {
         gap: 20px;
     }
+
+    .slides > div {
+        max-width: 350px;
+        height: 220px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -348,13 +413,19 @@ footer p {
         max-width: 90%;
     }
 
-    .gallery {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 15px;
-    }
-
     .contact-form {
         max-width: 90%;
+    }
+
+    .slides > div {
+        max-width: 280px;
+        height: 200px;
+    }
+
+    .slider-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
     }
 }
 
@@ -391,5 +462,16 @@ footer p {
     .card img {
         max-width: 100%;
         transform: none;
+    }
+
+    .slides > div {
+        max-width: 240px;
+        height: 180px;
+    }
+
+    .slider-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
     }
 }

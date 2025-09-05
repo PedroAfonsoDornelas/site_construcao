@@ -1,3 +1,4 @@
+// ====== FORMULÁRIO ======
 document.getElementById('contactForm').addEventListener('submit', function(event) {
     event.preventDefault();
     console.log('Formulário submetido!');
@@ -51,20 +52,45 @@ document.getElementById('closePopup').addEventListener('click', function() {
     console.log('Popup fechado manualmente!');
 });
 
+// ====== NAVEGAÇÃO SUAVE (caso use dropdown) ======
 document.addEventListener('DOMContentLoaded', function () {
     const navigation = document.getElementById('navigation');
-
-    navigation.addEventListener('change', function () {
-        const targetSection = this.value;
-
-        if (targetSection && targetSection !== '#') {
-            const section = document.querySelector(targetSection);
-            if (section) {
-                // Rolar suavemente para a seção
-                section.scrollIntoView({
-                    behavior: 'smooth'
-                });
+    if (navigation) {
+        navigation.addEventListener('change', function () {
+            const targetSection = this.value;
+            if (targetSection && targetSection !== '#') {
+                const section = document.querySelector(targetSection);
+                if (section) {
+                    section.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
             }
-        }
-    });
+        });
+    }
+});
+
+// ====== CARROSSEL ======
+document.addEventListener("DOMContentLoaded", () => {
+    const slides = document.querySelector(".slides");
+    const prevBtn = document.querySelector(".slider-btn.prev");
+    const nextBtn = document.querySelector(".slider-btn.next");
+
+    if (slides && prevBtn && nextBtn) {
+        const scrollAmount = slides.clientWidth * 0.9;
+
+        prevBtn.addEventListener("click", () => {
+            slides.scrollBy({
+                left: -scrollAmount,
+                behavior: "smooth"
+            });
+        });
+
+        nextBtn.addEventListener("click", () => {
+            slides.scrollBy({
+                left: scrollAmount,
+                behavior: "smooth"
+            });
+        });
+    }
 });
